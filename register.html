@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Tanetasty</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Tanetasty</h1>
+            <button id="burger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </button>
+              <ul id="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html" class="active">Login/Daftar</a></li>
+              </ul>
+            </div>
+            <div id="mobile-menu"> 
+              <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html">Login/Daftar</a></li>
+              </ul>
+        </div>
+    </nav>
+
+    <section class="register">
+        <div class="container">
+            <form id="register-form">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Daftar</button>
+            </form>
+            <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tanetasty</p>
+            <ul class="social-media">
+                <li><a href="https://www.facebook.com/tanetasty.id">Facebook</a></li>
+                <li><a href="https://www.instagram.com/tanetasty.id">Instagram</a></li>
+                <li><a href="https://www.twitter.com/tanetasty.id">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        const registerForm = document.getElementById('register-form');
+
+        registerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value; 
+
+            fetch('data/users.json')
+                .then(response => response.json())
+                .then(users => {
+                    const existingUser = users.find(user => user.username === username);
+                    if (existingUser) {
+                        alert('Username sudah terdaftar.');
+                        return;
+                    }
+
+                    const newUser = {
+                        id: generateUUID(), 
+                        username: username,
+                        email: email,
+                        password: password, 
+                        orderHistory: []
+                    };
+
+                    users.push(newUser);
+
+                    fetch('data/users.json', {
+                        method: 'PUT', 
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(users)
+                    })
+                    .then(() => {
+                        alert('Registrasi berhasil!');
+                        window.location.href = 'login.html'; 
+                    })
+                    .catch(error => {
+                        console.error('Error saat menyimpan data user:', error);
+                        alert('Terjadi kesalahan saat registrasi.');
+                    });
+                });
+        });
+
+        function generateUUID() { 
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+    </script>
+</body>
+</html>

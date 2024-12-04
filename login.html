@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Tanetasty</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Tanetasty</h1>
+            <button id="burger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </button>
+              <ul id="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html" class="active">Login/Daftar</a></li>
+              </ul>
+            </div>
+            <div id="mobile-menu"> 
+              <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html">Login/Daftar</a></li>
+              </ul>
+        </div>
+    </nav>
+
+    <section class="login">
+        <div class="container">
+            <form id="login-form">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Masuk</button>
+            </form>
+            <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tanetasty</p>
+            <ul class="social-media">
+                <li><a href="https://www.facebook.com/tanetasty.id">Facebook</a></li>
+                <li><a href="https://www.instagram.com/tanetasty.id">Instagram</a></li>
+                <li><a href="https://www.twitter.com/tanetasty.id">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        const loginForm = document.getElementById('login-form');
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('data/users.json')
+                .then(response => response.json())
+                .then(users => {
+                    const user = users.find(u => u.username === username && u.password === password); 
+
+                    if (user) {
+                        
+
+                        alert('Login berhasil!');
+                        window.location.href = 'index.html'; 
+                    } else {
+                        alert('Username atau password salah.');
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

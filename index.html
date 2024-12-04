@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanetasty - Sambal Asli dari Desa Tanete</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Tanetasty</h1>
+            <button id="burger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </button>
+              <ul id="nav-links">
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html">Login/Daftar</a></li>
+              </ul>
+            </div>
+            <div id="mobile-menu"> 
+              <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="testimonial.html">Testimoni</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+                <li><a href="login.html">Login/Daftar</a></li>
+              </ul>
+            </div>
+    </nav>
+    <div class="banner-image"> 
+        <img src="images/background-tanetasty.png" alt="Banner Tanetasty">
+      </div>
+    <header>
+        <div class="container">
+            <div class="slogan-background"> 
+            <div class="hero-text">
+                <h2>AUTHENTIC FLAVOR</h2>
+                <p>Harvested from Tanete's Heart</p>
+            </div>
+        </div>
+    </header>
+    <div class="divider"></div>
+    </section>
+    <section class="products">
+        <div class="container">
+            <h2>Produk Kami</h2>
+            <div class="product-list">
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tanetasty</p>
+            <ul class="social-media">
+                <li><a href="https://www.facebook.com/tanetasty.id">Facebook</a></li>
+                <li><a href="https://www.instagram.com/tanetasty.id">Instagram</a></li>
+                <li><a href="https://www.twitter.com/tanetasty.id">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function loadProducts() {
+            fetch('data/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const productList = document.querySelector('.product-list');
+                    productList.innerHTML = ''; 
+
+                    products.forEach(product => {
+                        const productElement = `
+                            <div class="product">
+                                <h3>${product.name}</h3>
+                                <img src="${product.image}" alt="${product.name}">
+                                <p>Rp ${product.price}</p>
+                                <a href="product-detail.html?id=${product.id}" class="button">Detail Produk</a>
+                            </div>
+                        `;
+                        productList.innerHTML += productElement;
+                    });
+                });
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>

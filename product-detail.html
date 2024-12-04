@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Produk - Tanetasty</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <h1>Tanetasty</h1>
+    <button id="burger-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul id="nav-links">
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="testimonial.html">Testimoni</a></li>
+      <li><a href="cart.html">Keranjang</a></li>
+      <li><a href="login.html">Login/Daftar</a></li>
+    </ul>
+  </div>
+  <div id="mobile-menu"> 
+    <ul>
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="testimonial.html">Testimoni</a></li>
+      <li><a href="cart.html">Keranjang</a></li>
+      <li><a href="login.html">Login/Daftar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="product-detail">
+  <div class="container">
+    <div id="product-detail-container">
+      <div id="product-info"></div> 
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Tanetasty</p>
+    <ul class="social-media">
+      <li><a href="https://www.facebook.com/tanetasty.id">Facebook</a></li>
+      <li><a href="https://www.instagram.com/tanetasty.id">Instagram</a></li>
+      <li><a href="https://www.twitter.com/tanetasty.id">Twitter</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = parseInt(urlParams.get('id'));
+
+  fetch('data/products.json')
+    .then(response => response.json())
+    .then(products => {
+      const product = products.find(p => p.id === productId);
+      const productInfo = document.getElementById('product-info');
+
+      if (product) {
+        let checkoutLink;
+        switch (product.id) {
+          case 1:
+            checkoutLink = "https://app.sandbox.midtrans.com/payment-links/1733125450816"; 
+            break;
+          case 2:
+            checkoutLink = "https://app.sandbox.midtrans.com/payment-links/1733125623684"; 
+            break;
+          case 3:
+            checkoutLink = "https://app.sandbox.midtrans.com/payment-links/1733125680301"; 
+            break;
+          default:
+            checkoutLink = "#"; 
+        }
+
+        const productElement = `
+          <div class="product-container"> 
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-text"> 
+              <h2>${product.name}</h2>
+              <p class="price">Rp ${product.price}</p>
+              <h3>Deskripsi</h3>
+              <p>${product.description}</p>
+              <h3>Bahan-bahan</h3>
+              <ul>
+                ${product.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+              </ul>
+            </div>
+            <button class="button add-to-cart" data-product-id="${product.id}">Tambahkan ke Keranjang</button>
+            <a href="${checkoutLink}" id="belisekarang" class="button"> 
+              <button>Beli Sekarang</button> 
+            </a>
+          </div>
+        `;
+        productInfo.innerHTML = productElement;
+
+        const addToCartButton = document.querySelector('.add-to-cart');
+        addToCartButton.addEventListener('click', () => {
+          addToCart(productId);
+        });
+
+      } else {
+        productInfo.innerHTML = "<p>Produk tidak ditemukan.</p>";
+      }
+    });
+</script>
+</body>
+</html>
