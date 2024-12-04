@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Sambal Tanetasty Original",
+    "description": "Rasakan sensasi pedas nikmat yang membangkitkan selera dengan Sambal Tanetasty Original! Dibuat dari cabai merah pilihan yang dipetik langsung dari kebun-kebun terbaik di Desa Tanete, Kabupaten Gowa, Sulawesi Selatan, sambal ini menghadirkan cita rasa autentik yang akan memanjakan lidah Anda. Diolah secara tradisional dengan resep turun temurun, Sambal Tanetasty Original diracik dengan passion untuk menghasilkan sambal yang tidak hanya pedas, tetapi juga kaya akan aroma dan cita rasa khas. Perpaduan cabai, bawang merah, bawang putih, dan rempah pilihan menciptakan harmoni rasa yang lezat, pedas, dan bikin nagih! Nikmati Sambal Tanetasty Original sebagai pelengkap berbagai hidangan favoritmu, seperti ayam goreng, ikan bakar, nasi goreng, atau mie instan. Cocok juga sebagai cocolan tahu, tempe, dan kerupuk. Rasakan sensasi pedas yang membakar semangat dan membuat setiap gigitan lebih bermakna!",
+    "price": 25000,
+    "image": "images/original.png",
+    "weight": 250,
+    "ingredients": [
+      "Cabai merah pilihan",
+      "Bawang merah",
+      "Bawang putih",
+      "Garam",
+      "Gula pasir",
+      "Minyak goreng"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sambal Tanetasty Cakalang",
+    "description": "Pecinta cakalang, bersukacitalah! Sambal Tanetasty Cakalang hadir dengan perpaduan pedas nikmat dan gurih yang tak tertahankan. Diracik dengan ikan cakalang asap pilihan yang kaya akan omega-3, sambal ini bukan hanya lezat, tetapi juga menyehatkan. Bayangkan sensasi pedas dari cabai pilihan berpadu dengan gurihnya ikan cakalang asap yang meleleh di mulut. Hmm... sungguh perpaduan yang sempurna! Sambal Tanetasty Cakalang cocok dinikmati dengan nasi hangat, mie instan, atau sebagai cocolan tahu, tempe, dan kerupuk. Siap-siap ketagihan dengan rasa pedas gurih yang menggugah selera!",
+    "price": 30000,
+    "image": "images/cakalang.png",
+    "weight": 300,
+    "ingredients": [
+      "Cabai merah pilihan",
+      "Bawang merah",
+      "Bawang putih",
+      "Garam",
+      "Gula pasir",
+      "Minyak goreng",
+      "Ikan cakalang asap"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Sambal Tanetasty Ayam Suwir",
+    "description": "Manjakan lidahmu dengan Sambal Tanetasty Ayam Suwir! Sambal ini menghadirkan perpaduan pedas nikmat dan gurih yang lezat dari ayam suwir pilihan. Diracik dengan resep khusus dan bahan-bahan berkualitas, sambal ini akan membawa pengalaman kulinermu ke level selanjutnya. Rasakan sensasi pedas yang menyengat berpadu dengan gurihnya ayam suwir yang empuk dan lezat. Sungguh perpaduan yang tak terlupakan! Sambal Tanetasty Ayam Suwir cocok dinikmati dengan nasi hangat, mie instan, lontong, ketupat, atau sebagai cocolan.",
+    "price": 30000,
+    "image": "images/ayam.png",
+    "weight": 300,
+    "ingredients": [
+      "Cabai merah pilihan",
+      "Bawang merah",
+      "Bawang putih",
+      "Garam",
+      "Gula pasir",
+      "Minyak goreng",
+      "Ayam suwir"
+    ]
+  }
+]
